@@ -57,8 +57,13 @@ public class Time {
         Time time2 = new Time(555550000); // For specified elapsed time
 
         // Display the time using the getter methods
+        System.out.printf(
+                "Time 1 (Current Time): %d : %d : %d %n", time1.getHour(), time1.getMinute(), time1.getSecond());
         System.out.println(
                 "Time 1 (Current Time): " + time1.getHour() + ":" + time1.getMinute() + ":" + time1.getSecond());
+
+        System.out.printf(
+                "Time 2 (Current Time): %d : %d : %d %n", time2.getHour(), time2.getMinute(), time2.getSecond());
         System.out.println(
                 "Time 2 (Elapsed Time): " + time2.getHour() + ":" + time2.getMinute() + ":" + time2.getSecond());
     }

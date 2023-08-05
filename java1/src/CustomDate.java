@@ -22,7 +22,7 @@ public class CustomDate {
      * let variable become int
      * instead of System.out.print(variable1 + " string " + variable2);
      * we can make it
-     * System.out.print("%d string %d ", variable1 , variable2);
+     * System.out.printf("%d string %d ", variable1 , variable2);
      */
 
     public CustomDate(int month, int day, int year) {
