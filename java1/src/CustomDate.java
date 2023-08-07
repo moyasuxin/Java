@@ -1,10 +1,12 @@
 import java.time.LocalDate;
+import java.util.*;
 
 public class CustomDate {
     private int day;
     private int month;
     private int year;
 
+    private static Scanner input = new Scanner(System.in);
     /*
      * %: This is the placeholder for the value that will be replaced during
      * formatting.
@@ -114,6 +116,21 @@ public class CustomDate {
 
     public static void main(String[] args) {
         // Create CustomDate objects with the current date
+        System.out.println(
+                "If you want to set current date (IRL) as format press 1, if you want a custom date as format press 2");
+        String inputs = input.next();
+        if (inputs.equalsIgnoreCase("1")) {
+            method1();
+        } else if (inputs.equalsIgnoreCase("2")) {
+            method2(input); // Pass the Scanner object to method2
+        } else {
+            System.out.println("Invalid input. Please try again.");
+        }
+
+        input.close();
+    }
+
+    static void method1() {
         LocalDate currentDate = LocalDate.now();
 
         // CustomDate with three integer values (MM/DD/YYYY format)
@@ -128,6 +145,25 @@ public class CustomDate {
 
         // CustomDate with two integer values (DDD YYYY format)
         CustomDate date3 = new CustomDate(currentDate.getDayOfYear(), currentDate.getYear());
+        date3.printDateDDDYYYY();
+    }
+
+    static void method2(Scanner input) {
+        System.out.println("Enter the date in the format MM DD YYYY (separated by spaces):");
+        int month = input.nextInt();
+        int day = input.nextInt();
+        int year = input.nextInt();
+
+        // CustomDate with three integer values (MM/DD/YYYY format)
+        CustomDate date1 = new CustomDate(month, day, year);
+        date1.printDateMMDDYYYY();
+
+        // CustomDate with a String and two integer values (Month DD, YYYY format)
+        CustomDate date2 = new CustomDate(month, day, year);
+        date2.printDateMonthDDYYYY();
+
+        // CustomDate with two integer values (DDD YYYY format)
+        CustomDate date3 = new CustomDate(LocalDate.of(year, month, day).getDayOfYear(), year);
         date3.printDateDDDYYYY();
     }
 }

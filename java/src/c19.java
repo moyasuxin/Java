@@ -29,12 +29,41 @@ public class c19 {
 
         System.out.println("Enter Course Name: ");
         String courseName = input.nextLine();
+        System.out.println("Enter Textbook Title: ");
+        String textBookName = input.nextLine();
+        System.out.println("Enter Textbook Author Name: ");
+        String textBookAuthor = input.nextLine();
+        System.out.println("Enter Textbook Publisher: ");
+        String textBookPublisher = input.nextLine();
+        System.out.println("Enter Lecturer Name: ");
+        String Lecturer = input.nextLine();
+        System.out.println("Enter Lecturer surname: ");
+        String LecturerSurname = input.nextLine();
+        System.out.println("Enter Lecturer Phone number: ");
+        int LecturerPhone = input.nextInt();
         // Create a object
-        TextBook textBook = new TextBook(null, null, null);
-        Lecturer lecturer = new Lecturer(null, null, null);
+        TextBook textBook = new TextBook(textBookName, textBookAuthor, textBookPublisher);
+        Lecturer lecturer = new Lecturer(Lecturer, LecturerSurname, LecturerPhone);
 
         // Initialize the CreditCard using the void method
         c19 course = new c19();
+        course.Course(courseName, textBook, lecturer);
+        // output
+        System.out.println("=========================" + "Course" + "=========================");
+        System.out.println("Course Name: " + course.getCourseString());
+        System.out.println("Course Textbook: " + course.getTextBook().getTitle());
+        System.out.println("Course Lecturer: " + course.getLecturer().getName());
+        System.out.println("=========================" + "=========================");
+        System.out.println("=========================" + "Textbook details" + "=========================");
+        System.out.println("Textbook Author: " + course.getTextBook().getAuthor());
+        System.out.println("Textbook Publisher: " + course.getTextBook().getPublisher());
+        System.out.println("=========================" + "=========================");
+        System.out.println("=========================" + "Lecturer" + "=========================");
+        System.out.println(
+                "Lecturer Full Name: " + course.getLecturer().getName() + " " + course.getLecturer().getSurname());
+        System.out.println("Lecturer Surname: " + course.getLecturer().getSurname());
+        System.out.println("Lecturer Phone Number: " + course.getLecturer().getOfficeNumber());
+        System.out.println("=========================" + "=========================");
         course.Course(courseName, textBook, lecturer);
         input.close();
     }
@@ -63,9 +92,10 @@ class TextBook {
 }
 
 class Lecturer {
-    String name, surname, officeNumber;
+    String name, surname;
+    int officeNumber;
 
-    public Lecturer(String name, String surname, String officeNumber) {
+    public Lecturer(String name, String surname, int officeNumber) {
         this.name = name;
         this.surname = surname;
         this.officeNumber = officeNumber;
@@ -79,7 +109,7 @@ class Lecturer {
         return surname;
     }
 
-    public String getOfficeNumber() {
+    public int getOfficeNumber() {
         return officeNumber;
     }
 }
